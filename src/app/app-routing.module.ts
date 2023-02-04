@@ -7,13 +7,16 @@ import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: 'login', component: LoginComponent/*, canActivate: [SigninupAccessGuard]*/ },
-  { path: 'signup', component: SignupComponent},
-  { path: '**', component: PageNotFoundComponent }
+  {
+    path: 'login',
+    component: LoginComponent /*, canActivate: [SigninupAccessGuard]*/,
+  },
+  { path: 'signup', component: SignupComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

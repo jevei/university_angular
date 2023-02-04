@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './components/app/app.component'
+import { AppComponent } from './components/app/app.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,14 +15,10 @@ import { SignupComponent } from './components/signup/signup.component';
     LoginComponent,
     PageNotFoundComponent,
     WelcomeComponent,
-    SignupComponent
+    SignupComponent,
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-  ],
+  imports: [BrowserModule, RouterModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
