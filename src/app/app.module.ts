@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AdminComponent } from './components/admin/admin.component';
     ProductsComponent,
     ProductViewComponent,
     AdminComponent,
+    ProfileComponent,
   ],
   imports: [ReactiveFormsModule, BrowserModule, RouterModule, AppRoutingModule],
   providers: [],
