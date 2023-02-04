@@ -8,6 +8,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductViewComponent } from './components/product-view/product-view.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +20,11 @@ import { LoginComponent } from './components/login/login.component';
     WelcomeComponent,
     SignupComponent,
     LoginComponent,
+    ProductsComponent,
+    ProductViewComponent,
+    AdminComponent,
   ],
-  imports: [BrowserModule, RouterModule, AppRoutingModule],
+  imports: [ReactiveFormsModule, BrowserModule, RouterModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

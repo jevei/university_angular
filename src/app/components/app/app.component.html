@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-<h1>Angular Router App</h1>
+<a class="navbar-brand" [routerLink]="['/']">
+  <h1>EpharmaWeb</h1>
+</a>
 <!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]="['/']">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
@@ -14,13 +15,13 @@
         <a class="nav-link" [routerLink]="['/login']">Connexion</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/signup']">S'enregistrer</a>
+        <a class="nav-link" [routerLink]="['/signup']">Inscription</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" [routerLink]="['/']">WIP</a>
+        <a class="nav-link" [routerLink]="['/products']">Produits</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" [routerLink]="['/']">WIP</a>
+      <li class="nav-item" *ngIf="this.isAdmin()!=false">
+        <a class="nav-link" [routerLink]="['/admin']">Pharmacien</a>
       </li>
     </ul>
   </div>

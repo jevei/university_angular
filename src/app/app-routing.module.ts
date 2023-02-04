@@ -4,10 +4,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'products', component: ProductsComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
