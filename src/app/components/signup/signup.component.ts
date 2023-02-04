@@ -6,6 +6,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ import {
 export class SignupComponent implements OnInit {
   signForm: FormGroup;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.signForm = new FormGroup(
       {
         firstname: new FormControl('', [
@@ -55,5 +56,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  signUp() {}
+  signUp() {
+    console.log(JSON.stringify(this.signForm.getRawValue()));
+  }
 }

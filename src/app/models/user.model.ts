@@ -5,5 +5,11 @@ export class User extends JSONObject {
 
   email!: string;
 
+  firstname!: string;
+
+  lastname!: string;
+
+  phone_number!: string;
+
   is_admin!: boolean;
 }
