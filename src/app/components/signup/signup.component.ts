@@ -6,6 +6,8 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -16,7 +18,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupComponent implements OnInit {
   signForm: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.signForm = new FormGroup(
       {
         firstname: new FormControl('', [
@@ -58,5 +60,22 @@ export class SignupComponent implements OnInit {
 
   signUp() {
     console.log(JSON.stringify(this.signForm.getRawValue()));
+    let newUser: User = new User();
+    newUser.email = this.signForm.get('email')?.value;
+    newUser.password = this.signForm.get('password')?.value;
+    newUser.firstname = this.signForm.get('firstname')?.value;
+    newUser.lastname = this.signForm.get('lastname')?.value;
+    newUser.phone_number = this.signForm.get('phone_number')?.value;
+    console.log('SignUpform value : ', this.signForm.value);
+    console.log('New user value ', newUser);
+    this.authService.userRegistration(newUser).subscribe((success) => {
+      if (success) {
+        this.router.navigate(['/']);
+        console.log('OK');
+      } else {
+        console.log('ERROR');
+        alert("Erreur dans le formulaire d'inscription");
+      }
+    });
   }
 }
