@@ -13,13 +13,16 @@
   <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{ show: navbarOpen }">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/welcome']">Acceuil</a>
+        <a class="nav-link" [routerLink]="['']">Acceuil</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="this.isLoggedIn()!=true">
         <a class="nav-link" [routerLink]="['/login']">Connexion</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="this.isLoggedIn()!=true">
         <a class="nav-link" [routerLink]="['/signup']">Inscription</a>
+      </li>
+      <li class="nav-item" *ngIf="this.isLoggedIn()==true">
+        <a class="nav-link" (click)="logOut()">Déconnexion</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/products']">Produits</a>
@@ -31,4 +34,6 @@
   </div>
 </nav>
 <!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<div>
+  <router-outlet></router-outlet>
+</div>
