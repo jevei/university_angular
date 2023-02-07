@@ -1,0 +1,50 @@
+.welcome {
+  background-image: url("https://img.freepik.com/photos-gratuite/pharmacien-verifiant-medicaments-dans-pharmacie_259150-57964.jpg?w=1800&t=st=1675701693~exp=1675702293~hmac=5d267ed53eb1f12b928a95921484dafe7918f86327a9f7d25888c33299fff2a7");
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 50px;
+}
+
+h1 {
+  color: #6495ed;
+  text-shadow: 2px 2px black;
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+p {
+  color: black;
+  text-shadow: 1px 1px black;
+  font-size: 1.5em;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px black;
+  width: 30%;
+  height: 300px;
+  text-align: center;
+  padding: 40px;
+  margin: 20px;
+}
+
+.card h2 {
+  color: black;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.card p {
+  color: gray;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}

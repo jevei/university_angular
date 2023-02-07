@@ -7,10 +7,10 @@ import { LoginComponent } from './components/login/login.component';
 import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
-  { path: 'welcome', component: WelcomeComponent },
+  { path: '', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'products', component: ProductsComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'products', component: ProductsComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
