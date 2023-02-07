@@ -24,20 +24,18 @@ export class AuthService {
     return !!this._currentUser?.is_admin;
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const storedCurrentUser = JSON.parse(
+      sessionStorage.getItem(this.CURRENT_USER_KEY) ?? 'null'
+    );
 
-  /*getUsers(): Observable<User[]> {
-    return this.http
-      .get<User[]>(this.usersUrl)
-      .pipe(catchError(this.handleError<User[]>('getUsers', [])));
+    if (storedCurrentUser) {
+      // this._currentUser = new User(storedCurrentUser);
+
+      this._currentUser = storedCurrentUser;
+      console.log(this.currentUser);
+    }
   }
-
-  getUser(id: number): Observable<User> {
-    const url = `${this.usersUrl}/${id}`;
-    return this.http
-      .get<User>(url)
-      .pipe(catchError(this.handleError<User>(`getUser id=${id}`)));
-  }*/
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -53,16 +51,23 @@ export class AuthService {
     console.log(this._currentUser);
   }
 
-  userRegistration(newUser: User): Observable<User> {
-    return this.http
-      .post<User>(this.usersUrl, newUser, this.httpOptions)
-      .pipe(catchError(this.handleError<User>('adduser')));
+  userRegistration(newUser: User): Observable<any> {
+    return this.http.post<User>(this.usersUrl, newUser, this.httpOptions).pipe(
+      map((response) => {
+        console.log('New User service : ', response);
+        if (response) {
+          console.log('succès:', response);
+          this.setCurrentUser(newUser);
+          return true;
+        } else {
+          return false;
+        }
+      }),
+      catchError(this.handleError<User>('adduser'))
+    );
   }
 
   userLogin(email: string, password: string): Observable<any> {
-    /*var users = this.getUsers();
-    console.log(users);
-    return this.login(email, password);*/
     return this.http.get<User[]>(this.usersUrl).pipe(
       map((response) => {
         var retour: boolean = false;
@@ -73,35 +78,29 @@ export class AuthService {
           }
         });
         return retour;
-        //this.login(id);
       }),
       catchError(this.handleError<User[]>('getUsers', []))
     );
   }
 
-  /*login(id: number): Observable<any> {
-    const url = `${this.usersUrl}/${id}`;
-    return this.http.get<User>(url).pipe(
+  userSignout(): Observable<any> {
+    return this.http.get<any>(this.usersUrl).pipe(
       map((response) => {
+        console.log('New User signout service : ', response);
         if (response) {
-          //le .success, pour être vrait doit être fournie par l'api, donc pour l'instant il est toujours faux
-          console.log('New User service : ', response);
-
-          var data = response;
-          console.log('New User service : ', data);
-          let newUser: User = new User();
-          newUser = data;
-          console.log('New user value ', newUser);
-
-          //this.setCurrentUser(newUser);
+          this.setCurrentUser(null);
           return true;
         } else {
           return false;
         }
       }),
-      catchError(this.handleError<User>(`getUser id=${id}`))
+      catchError((error) => {
+        console.log('Error', error);
+
+        return of(null);
+      })
     );
-  }*/
+  }
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

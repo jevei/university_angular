@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'JXR';
   navbarOpen = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
@@ -20,5 +21,20 @@ export class AppComponent {
     if (this.authService.currentUser?.is_admin) {
       return true;
     } else return false;
+  }
+
+  logOut() {
+    this.authService.userSignout().subscribe((success) => {
+      if (success) {
+        console.log('Utilisateur déconnecter');
+        this.router.navigate(['/']);
+      } else {
+        console.log('Erreur', success);
+      }
+    });
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
   }
 }
