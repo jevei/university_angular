@@ -6,6 +6,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'products/PLACEHOLDER' /*':id'*/, component: ProductViewComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

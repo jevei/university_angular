@@ -1,0 +1,68 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+
+.profile-info {
+  color: #333;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.profile-info h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.profile-info p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.history {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.history h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.history table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.history th,
+.history td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+}
+
+.btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
