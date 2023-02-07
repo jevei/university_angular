@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor() {
+  constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -20,5 +22,20 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  logIn() {}
+  logIn() {
+    this.authService
+      .userLogin(
+        this.loginForm.get('email')?.value,
+        this.loginForm.get('password')?.value
+      )
+      .subscribe((success) => {
+        if (success) {
+          this.router.navigate(['/']);
+          console.log('la team de JXR est trop forte');
+        } else {
+          console.log('ERROR');
+          alert('Email ou Mot de Passe invalide.');
+        }
+      });
+  }
 }
