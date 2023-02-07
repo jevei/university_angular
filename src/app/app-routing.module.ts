@@ -5,12 +5,14 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductViewComponent } from './components/product-view/product-view.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'products/PLACEHOLDER' /*':id'*/, component: ProductViewComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
