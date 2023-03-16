@@ -12,9 +12,14 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,10 @@ import { InMemoryDataService } from './services/in-memory-data.service';
       dataEncapsulation: false,
     }),
   ],
-  providers: [],
+  providers: [
+    HttpClient,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
