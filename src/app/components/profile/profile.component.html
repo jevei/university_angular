@@ -5,12 +5,13 @@
       alt="Profile Image">
   </div>
   <div class="profile-info">
-    <h2>Nom du client</h2>
-    <p>Adresse: 123 Main St, Ville, État</p>
-    <p>Numéro de téléphone: (555) 555-5555</p>
-    <a href="#" class="btn">Modifier les informations de profil</a>
+    <h2>{{currentUser.firstname+" "+currentUser.lastname}}</h2>
+    <p>Adresse: {{currentUser.email}}</p>
+    <p>Numéro de téléphone: {{currentUser.phone_number}}</p>
+    <a [routerLink]="['/profile/edit']" class="btn">Modifier les informations de profil</a>
   </div>
   <div class="history">
+    <!--Below is à PLACEHOLDER-->
     <h3>Historique des commandes</h3>
     <table>
       <thead>

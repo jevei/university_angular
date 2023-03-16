@@ -20,6 +20,8 @@ import {
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ProductViewComponent,
     AdminComponent,
     ProfileComponent,
+    ProductsListComponent,
+    ProductsListItemComponent,
   ],
   imports: [
     ReactiveFormsModule,

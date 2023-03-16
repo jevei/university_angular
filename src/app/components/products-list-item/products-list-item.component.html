@@ -1,0 +1,13 @@
+<div class="image">
+  <a [routerLink]="['/products', product.id]">
+    <img class="rounded" src="{{ product.picture_url }}" height="200" width="200">
+  </a>
+</div>
+<h3 style="text-align: center;">
+  <strong>
+    {{ product.name }}
+  </strong>
+</h3>
+<h3 style="text-align: center;">{{ product.price | number : '1.2-2' }}$</h3>
+<button *ngIf="this.isLoggedIn()==false" (click)="login()" class="btn btn-warning">Ajouter au panier</button>
+<p> --- </p>
