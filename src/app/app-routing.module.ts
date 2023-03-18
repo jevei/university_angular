@@ -7,14 +7,31 @@ import { LoginComponent } from './components/login/login.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminAccessGuard } from './guards/admin-access.guard';
+import { LoginAccessGuard } from './guards/login-access.guard';
+import { SigninupAccessGuard } from './guards/signinup-access.guard';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [SigninupAccessGuard],
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    canActivate: [SigninupAccessGuard],
+  },
   { path: 'products', component: ProductsComponent },
   { path: 'products/:id', component: ProductViewComponent },
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [LoginAccessGuard],
+  },
+  { path: 'admin', component: AdminComponent, canActivate: [AdminAccessGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 
