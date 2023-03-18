@@ -15,9 +15,9 @@ export class ProductApiRequestService {
     return this._products;
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(_operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       // Let the app keep running by returning an empty result.
@@ -33,6 +33,31 @@ export class ProductApiRequestService {
         return true;
       }),
       catchError(this.handleError<Product[]>('getProducts', []))
+    );
+  }
+
+  showProduct(id: number): Observable<any> {
+    return this.http.get<any>(this.productsUrl + '/' + id).pipe(
+      map((response) => {
+        if (response.id == id) {
+          return response;
+        }
+        /*if (response.success) {
+          console.log("Product : ", response.product);
+          return response.product;
+        }
+        else {
+          console.log(response);
+          return false;
+        }*/
+
+        return false;
+      }),
+      catchError((error) => {
+        console.log('Error', error);
+
+        return of(null);
+      })
     );
   }
 }

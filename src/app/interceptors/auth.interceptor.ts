@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -17,3 +17,4 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(secureReq);
   }
 }
+*/

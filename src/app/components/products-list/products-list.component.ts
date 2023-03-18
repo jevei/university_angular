@@ -12,7 +12,16 @@ export class ProductsListComponent implements OnInit {
     return this.apiService.products;
   }
 
-  constructor(private apiService: ProductApiRequestService) {}
+  constructor(private apiService: ProductApiRequestService) {
+    this.apiService.listProducts().subscribe((success) => {
+      if (success) {
+        console.log('OK');
+      } else {
+        console.log('ERROR', success);
+        alert('ERROR!!!');
+      }
+    });
+  }
 
   ngOnInit(): void {
     console.log('TEST:', this.products);

@@ -2,22 +2,22 @@
   <div class="row">
     <div class="col-sm">
       <div class="row">
-        <img src="" class="w-100 h-100 rounded" alt="PLACEHOLDER.image" class="product-image">
+        <img src="{{ product.picture_url }}" class="w-100 h-100 rounded" alt="PLACEHOLDER.image" class="product-image">
       </div>
     </div>
     <div class="col-sm">
       <div class="row">
         <h1>
-          PLACEHOLDER.title
+          {{ product.name }}
         </h1>
       </div>
       <div class="row">
         <h2>
-          PLACEHOLDER.price$
+          {{ product.price | number : '1.2-2' }}$
         </h2>
       </div>
       <div class="row">
-        Quantité restante : PLACEHOLDER.quantity
+        Quantité restante : {{ product.stock }}
       </div>
       <div class="row">
         <h1>
@@ -25,7 +25,7 @@
         </h1>
       </div>
       <div class="row">
-        PLACEHOLDER.description
+        {{ product.description }}
       </div>
     </div>
     <div class="col-sm">
