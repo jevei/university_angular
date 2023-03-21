@@ -27,22 +27,58 @@
       <div class="row">
         {{ product.description }}
       </div>
+      <div class="row">
+        <h4>
+          Dernière entré
+        </h4>
+      </div>
+      <div class="row">
+        {{ product.last_input }}
+      </div>
+      <div class="row">
+        <h4>
+          Dernière sortis
+        </h4>
+      </div>
+      <div class="row">
+        {{ product.last_output }}
+      </div>
     </div>
     <div class="col-sm">
       <form>
         PLACEHOLDER.form_to_ask_quantity
       </form>
-      <form [formGroup]="updateProductForm" (ngSubmit)="updateProduct()">
+      <form [formGroup]="updateProductForm" (ngSubmit)="updateProduct()" *ngIf="this.isAdmin()==true">
         <div class="row form-group">
-
-          <button *ngIf="this.isAdmin()==true" type="submit" class="btn btn-success">
+          <div>
+            <input formControlName="name" type="text" placeholder="nom" class="form-control">
+          </div>
+          <div>
+            <input formControlName="stock" type="text" placeholder="stock" class="form-control">
+          </div>
+          <div>
+            <input formControlName="price" type="text" placeholder="prix" class="form-control">
+          </div>
+          <div>
+            <input formControlName="expiration" type="text" placeholder="expiration" class="form-control">
+          </div>
+          <div>
+            <input formControlName="description" type="text" placeholder="description" class="form-control">
+          </div>
+          <div>
+            <input formControlName="last_input" type="text" placeholder="dernière entré" class="form-control">
+          </div>
+          <div>
+            <input formControlName="last_output" type="text" placeholder="dernière sortis" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-success">
             Patch le Produit
           </button>
         </div>
       </form>
-      <form [formGroup]="deleteProductForm" (ngSubmit)="deleteProduct()">
+      <form [formGroup]="deleteProductForm" (ngSubmit)="deleteProduct()" *ngIf="this.isAdmin()==true">
         <div class="row form-group">
-          <button *ngIf="this.isAdmin()==true" type="submit" class="btn btn-danger">
+          <button type="submit" class="btn btn-danger">
             Supprimer le Produit
           </button>
         </div>

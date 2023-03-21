@@ -13,7 +13,7 @@ export class Product {
 
   last_input!: string;
 
-  last_output!: boolean;
+  last_output!: string;
 
   picture_url!: string;
 }

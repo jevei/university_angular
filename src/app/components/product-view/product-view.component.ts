@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -41,7 +41,15 @@ export class ProductViewComponent implements OnInit {
         }
       });
     this.deleteProductForm = new FormGroup({});
-    this.updateProductForm = new FormGroup({});
+    this.updateProductForm = new FormGroup({
+      name: new FormControl(''),
+      stock: new FormControl(''),
+      price: new FormControl(''),
+      expiration: new FormControl(''),
+      description: new FormControl(''),
+      last_input: new FormControl(''),
+      last_output: new FormControl(''),
+    });
   }
 
   ngOnInit(): void {}
@@ -73,27 +81,46 @@ export class ProductViewComponent implements OnInit {
 
   updateProduct() {
     console.log(this.product);
-    let nom = prompt('Entrez le nouveau nom :', '');
-    if (nom != null) {
-      this.product.name = nom;
-      this.apiService
-        .updateProduct(this.product.id.toString(), this.product)
-        .subscribe((success) => {
-          if (success) {
-            console.log('OK', success);
-            this.apiService.listProducts().subscribe((success) => {
-              if (success) {
-                console.log('OK');
-              } else {
-                console.log('ERROR');
-                alert('ERROR!!!');
-              }
-            });
-          } else {
-            console.log('ERROR');
-            alert('ERROR!!!');
-          }
-        });
+    if (this.updateProductForm.get('name')?.value != '') {
+      this.product.name = this.updateProductForm.get('name')?.value;
     }
+    if (this.updateProductForm.get('stock')?.value != '') {
+      this.product.stock = this.updateProductForm.get('stock')?.value;
+    }
+    if (this.updateProductForm.get('price')?.value != '') {
+      this.product.price = this.updateProductForm.get('price')?.value;
+    }
+    if (this.updateProductForm.get('expiration')?.value != '') {
+      this.product.expiration = this.updateProductForm.get('expiration')?.value;
+    }
+    if (this.updateProductForm.get('description')?.value != '') {
+      this.product.description =
+        this.updateProductForm.get('description')?.value;
+    }
+    if (this.updateProductForm.get('last_input')?.value != '') {
+      this.product.last_input = this.updateProductForm.get('last_input')?.value;
+    }
+    if (this.updateProductForm.get('last_output')?.value != '') {
+      this.product.last_output =
+        this.updateProductForm.get('last_output')?.value;
+    }
+    this.apiService
+      .updateProduct(this.product.id.toString(), this.product)
+      .subscribe((success) => {
+        if (success) {
+          console.log('OK', success);
+          this.apiService.listProducts().subscribe((success) => {
+            if (success) {
+              console.log('OK');
+            } else {
+              console.log('ERROR');
+              alert('ERROR!!!');
+            }
+          });
+        } else {
+          console.log('ERROR');
+          alert('ERROR!!!');
+        }
+      });
   }
 }
