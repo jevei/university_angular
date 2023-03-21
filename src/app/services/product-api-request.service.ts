@@ -42,15 +42,23 @@ export class ProductApiRequestService {
         if (response.id == id) {
           return response;
         }
-        /*if (response.success) {
-          console.log("Product : ", response.product);
-          return response.product;
-        }
-        else {
-          console.log(response);
-          return false;
-        }*/
+        return false;
+      }),
+      catchError((error) => {
+        console.log('Error', error);
 
+        return of(null);
+      })
+    );
+  }
+
+  deleteProduct(product: Product): Observable<any> {
+    return this.http.delete<any>(this.productsUrl + '/' + product.id).pipe(
+      map((response) => {
+        console.log(response);
+        if (response == null) {
+          return true;
+        }
         return false;
       }),
       catchError((error) => {
