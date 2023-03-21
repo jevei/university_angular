@@ -32,6 +32,14 @@
       <form>
         PLACEHOLDER.form_to_ask_quantity
       </form>
+      <form [formGroup]="updateProductForm" (ngSubmit)="updateProduct()">
+        <div class="row form-group">
+
+          <button *ngIf="this.isAdmin()==true" type="submit" class="btn btn-success">
+            Patch le Produit
+          </button>
+        </div>
+      </form>
       <form [formGroup]="deleteProductForm" (ngSubmit)="deleteProduct()">
         <div class="row form-group">
           <button *ngIf="this.isAdmin()==true" type="submit" class="btn btn-danger">

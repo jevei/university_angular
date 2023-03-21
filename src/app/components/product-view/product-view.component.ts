@@ -12,6 +12,7 @@ import { ProductApiRequestService } from 'src/app/services/product-api-request.s
 })
 export class ProductViewComponent implements OnInit {
   deleteProductForm: FormGroup;
+  updateProductForm: FormGroup;
 
   private _product: Product | null = null;
 
@@ -40,6 +41,7 @@ export class ProductViewComponent implements OnInit {
         }
       });
     this.deleteProductForm = new FormGroup({});
+    this.updateProductForm = new FormGroup({});
   }
 
   ngOnInit(): void {}
@@ -67,5 +69,31 @@ export class ProductViewComponent implements OnInit {
         alert('ERROR!!!');
       }
     });
+  }
+
+  updateProduct() {
+    console.log(this.product);
+    let nom = prompt('Entrez le nouveau nom :', '');
+    if (nom != null) {
+      this.product.name = nom;
+      this.apiService
+        .updateProduct(this.product.id.toString(), this.product)
+        .subscribe((success) => {
+          if (success) {
+            console.log('OK', success);
+            this.apiService.listProducts().subscribe((success) => {
+              if (success) {
+                console.log('OK');
+              } else {
+                console.log('ERROR');
+                alert('ERROR!!!');
+              }
+            });
+          } else {
+            console.log('ERROR');
+            alert('ERROR!!!');
+          }
+        });
+    }
   }
 }
