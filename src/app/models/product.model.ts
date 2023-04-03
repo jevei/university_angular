@@ -1,19 +1,11 @@
-export class Product {
-  id!: number;
-
-  name!: string;
-
-  stock!: number;
-
-  price!: number;
-
-  expiration!: string;
-
-  description!: string;
-
-  last_input!: string;
-
-  last_output!: string;
-
-  picture_url!: string;
+export interface Product {
+  id: number;
+name: string;
+description: string;
+price: number;
+stock: number;
+expiration: Date;
+last_input: Date;
+last_output: string;
+picture_url: string;
 }

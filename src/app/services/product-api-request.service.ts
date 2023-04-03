@@ -4,14 +4,15 @@ import { Router } from '@angular/router';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Product } from '../models/product.model';
 
+
 @Injectable({
-  providedIn: 'root',
+providedIn: 'root',
 })
 export class ProductApiRequestService {
-  private productsUrl = 'api/products';
-  private _products: Product[] = [];
+private productsUrl = 'api/products';
+private _products: Product[] = [];
 
-  get products(): Product[] {
+get products(): Product[] {
     return this._products;
   }
 
@@ -100,6 +101,17 @@ export class ProductApiRequestService {
 
         return of(null);
       })
+    );
+  }
+
+  addProduct(product: Product): Observable<any> {
+    const jsonProduct = this.generateJSONforProduct(product);
+    return this.http.post(this.productsUrl, jsonProduct).pipe(
+      map((response) => {
+        console.log('Product added : ', response);
+        return response;
+      }),
+      catchError(this.handleError<any>('addProduct'))
     );
   }
 }
