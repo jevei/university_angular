@@ -11,10 +11,29 @@ import { ProductApiRequestService } from 'src/app/services/product-api-request.s
   styleUrls: ['./product-view.component.css'],
 })
 export class ProductViewComponent implements OnInit {
+  get stockQuantity(): number {
+    return <number>this._stockQuantity;
+  }
+
+  set stockQuantity(value: number) {
+    this._stockQuantity = value;
+  }
   deleteProductForm: FormGroup;
   updateProductForm: FormGroup;
 
+
   private _product: Product | null = null;
+
+  stockText: string = '';
+  private _stockQuantity: number | undefined =this._product?.stock;
+  checkStock(): void {
+    if (this.stockQuantity > 0) {
+      this.stockText = 'In stock';
+    } else {
+      this.stockText = 'Out of stock';
+    }
+  }
+
 
   get product(): Product {
     return this._product!;
