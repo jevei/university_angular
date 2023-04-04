@@ -18,6 +18,9 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
 import { DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     BrowserModule,
     RouterModule,
+CommonModule, FormsModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
