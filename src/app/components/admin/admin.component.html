@@ -1,27 +1,37 @@
-<button class="btn btn-primary" (click)="addingProduct = true" *ngIf="!addingProduct">Ajouter un médicament</button>
-
-<form class="my-4" *ngIf="addingProduct">
+<form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
   <h2 class="mb-3">Ajouter un médicament</h2>
   <div class="form-group">
-    <label for="name">Nom :</label>
-    <input id="name" class="form-control" type="text" [(ngModel)]="newProduct.name">
+    <label>Nom :</label>
+    <input formControlName="name" type="text" placeholder="nom" class="form-control">
   </div>
   <div class="form-group">
-    <label for="description">Description :</label>
-    <input id="description" class="form-control" type="text" [(ngModel)]="newProduct.description">
+    <label>Stock :</label>
+    <input formControlName="stock" type="text" placeholder="stock" class="form-control">
   </div>
   <div class="form-group">
-    <label for="price">Prix :</label>
+    <label>Prix :</label>
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">$</span>
       </div>
-      <input id="price" class="form-control" type="number" [(ngModel)]="newProduct.price" [ngModelOptions]="{updateOn: 'blur'}" currency="USD" />
+      <input formControlName="price" type="text" placeholder="prix" class="form-control">
     </div>
   </div>
-  <button class="btn btn-success mr-2" (click)="addProduct()">Ajouter</button>
-  <button class="btn btn-secondary" (click)="cancel()">Annuler</button>
-</form>
-<form #productForm *ngIf="addingProduct">
-
+  <div class="form-group">
+    <label>Expiration :</label>
+    <input formControlName="expiration" type="text" placeholder="expiration" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Description :</label>
+    <input formControlName="description" type="text" placeholder="description" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Dernière entrée :</label>
+    <input formControlName="last_input" type="text" placeholder="dernière entré" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Dernière sortis :</label>
+    <input formControlName="last_output" type="text" placeholder="dernière sortis" class="form-control">
+  </div>
+  <button [disabled]="addProductForm.invalid" class="btn btn-lg btn-primary btn-block" type="submit">Ajouter</button>
 </form>

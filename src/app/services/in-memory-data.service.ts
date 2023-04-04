@@ -83,7 +83,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 5,
         name: 'Accu-Check',
-        stock: 1,
+        stock: 0,
         price: 199.99,
         expiration: '2024-03-20',
         description: 'Moniteur de Glycimie',

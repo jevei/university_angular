@@ -1,18 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Product } from '../models/product.model';
 
-
 @Injectable({
-providedIn: 'root',
+  providedIn: 'root',
 })
 export class ProductApiRequestService {
-private productsUrl = 'api/products';
-private _products: Product[] = [];
+  private productsUrl = 'api/products';
+  private _products: Product[] = [];
 
-get products(): Product[] {
+  get products(): Product[] {
     return this._products;
   }
 
@@ -104,14 +102,21 @@ get products(): Product[] {
     );
   }
 
-  addProduct(product: Product): Observable<any> {
-    const jsonProduct = this.generateJSONforProduct(product);
-    return this.http.post(this.productsUrl, jsonProduct).pipe(
+  addProduct(newProduct: Product): Observable<any> {
+    return this.http.post(this.productsUrl, newProduct, this.httpOptions).pipe(
       map((response) => {
         console.log('Product added : ', response);
-        return response;
+        if (response) {
+          return true;
+        } else {
+          return false;
+        }
       }),
       catchError(this.handleError<any>('addProduct'))
     );
   }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 }

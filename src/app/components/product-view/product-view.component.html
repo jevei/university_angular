@@ -20,7 +20,7 @@
         Quantité restante : {{ product.stock }}
       </div>
       <div class="row">
-        PLAHOLDER.BOUTON.DEMANDER.DISPONIBILITÉ
+        <button class="stock-button" (click)="checkStock()">{{stockText}}</button>
       </div>
       <div class="row">
         <h1>
@@ -31,7 +31,6 @@
         {{ product.description }}
 
       </div>
-      <div> <button class="stock-button"(click)="checkStock()">{{stockText}}</button><div>
       <div class="row">
         <h4>
           Dernière entré
