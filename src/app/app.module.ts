@@ -12,12 +12,17 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
 import { DatePipe } from '@angular/common';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,7 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [
     HttpClient,
-    /*{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },*/
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     DatePipe,
   ],
   bootstrap: [AppComponent],

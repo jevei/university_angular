@@ -70,6 +70,7 @@ export class AuthService {
   userLogin(email: string, password: string): Observable<any> {
     return this.http.get<User[]>(this.usersUrl).pipe(
       map((response) => {
+        console.log(response);
         var retour: boolean = false;
         response.forEach((_user) => {
           if (_user.email == email && _user.password == password) {
