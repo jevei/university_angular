@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private _currentUser: User | null = null;
-  private usersUrl = 'api/users';
+  private usersUrl = '/api/users';
   private readonly CURRENT_USER_KEY = 'jxr.users.currentUser';
 
   get currentUser(): User | null {
@@ -52,7 +52,8 @@ export class AuthService {
   }
 
   userRegistration(newUser: User): Observable<any> {
-    return this.http.post<User>(this.usersUrl, newUser, this.httpOptions).pipe(
+    newUser.is_admin = false;
+    return this.http.post<User>(this.usersUrl, newUser).pipe(
       map((response) => {
         console.log('New User service : ', response);
         if (response) {
@@ -102,8 +103,4 @@ export class AuthService {
       })
     );
   }
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
 }
