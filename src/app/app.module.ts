@@ -17,8 +17,6 @@ import {
   HttpClient,
   HttpClientModule,
 } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-//import { InMemoryDataService } from './services/in-memory-data.service';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
 import { DatePipe } from '@angular/common';
@@ -44,9 +42,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    /*HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),*/
   ],
   providers: [
     HttpClient,
