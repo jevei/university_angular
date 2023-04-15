@@ -7,7 +7,7 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class ProductApiRequestService {
-  private productsUrl = 'api/products';
+  private productsUrl = '/api/products';
   private _products: Product[] = [];
 
   get products(): Product[] {
@@ -103,7 +103,7 @@ export class ProductApiRequestService {
   }
 
   addProduct(newProduct: Product): Observable<any> {
-    return this.http.post(this.productsUrl, newProduct, this.httpOptions).pipe(
+    return this.http.post(this.productsUrl, newProduct).pipe(
       map((response) => {
         console.log('Product added : ', response);
         if (response) {
@@ -115,8 +115,4 @@ export class ProductApiRequestService {
       catchError(this.handleError<any>('addProduct'))
     );
   }
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
 }

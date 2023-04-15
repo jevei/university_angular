@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { User } from '../models/user.model';
 
@@ -73,8 +73,7 @@ export class InMemoryDataService implements InMemoryDbService {
         stock: 40,
         price: 20.99,
         expiration: '2024-03-20',
-        description:
-          'https://www.santeenvrac.com/i/Flora-Fer-avec-complexe-de-vitamines-B-240-ml-Sante-en-vrac-13947.jpg?size=600',
+        description: 'Fer en comprimé',
         last_input: '2023-03-10',
         last_output: '2023-03-16',
         picture_url:
@@ -112,4 +111,4 @@ export class InMemoryDataService implements InMemoryDbService {
       ? Math.max(...users.map((user) => user.id)) + 1
       : 11;
   }
-}
+}*/
