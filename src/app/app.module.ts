@@ -3,49 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './components/app/app.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { LoginComponent } from './components/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ProductsComponent } from './components/products/products.component';
-import { ProductViewComponent } from './components/product-view/product-view.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import {
-  HTTP_INTERCEPTORS,
-  HttpClient,
-  HttpClientModule,
-} from '@angular/common/http';
-import { ProductsListComponent } from './components/products-list/products-list.component';
-import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { WelcomeModule } from './modules/welcome/welcome.module';
+import { ProductsModule } from './modules/products/products.module';
+import { PageNotFoundModule } from './modules/page-not-found/page-not-found.module';
+import { AuthentificationModule } from './modules/authentification/authentification.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    WelcomeComponent,
-    SignupComponent,
-    LoginComponent,
-    ProductsComponent,
-    ProductViewComponent,
-    AdminComponent,
-    ProfileComponent,
-    ProductsListComponent,
-    ProductsListItemComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
-    ReactiveFormsModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,
+    WelcomeModule,
+    ProductsModule,
+    AuthentificationModule,
     HttpClientModule,
+    PageNotFoundModule,
   ],
   providers: [
     HttpClient,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    /*{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },*/
     DatePipe,
   ],
   bootstrap: [AppComponent],
