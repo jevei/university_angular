@@ -7,7 +7,8 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class ProductApiRequestService {
-  private productsUrl = '/api/products';
+  //private productsUrl = 'http://localhost:8080/api/products';
+  private productsUrl = 'https://pacific-mesa-08775.herokuapp.com/api/drugs';
   private _products: Product[] = [];
 
   get products(): Product[] {
