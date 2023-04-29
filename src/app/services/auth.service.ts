@@ -4,13 +4,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'content-Type': 'application/json' }),
+};
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private _currentUser: User | null = null;
-  private usersUrl = '/api/users';
+  //private usersUrl = 'http://localhost:8080/api/visitors';
   private readonly CURRENT_USER_KEY = 'jxr.users.currentUser';
+  private usersUrl = 'https://pacific-mesa-08775.herokuapp.com/api/visitors';
 
   get currentUser(): User | null {
     return this._currentUser;
@@ -31,7 +35,6 @@ export class AuthService {
 
     if (storedCurrentUser) {
       // this._currentUser = new User(storedCurrentUser);
-
       this._currentUser = storedCurrentUser;
       console.log(this.currentUser);
     }

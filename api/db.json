@@ -17,6 +17,15 @@
       "phone_number": "1111111111",
       "password": "123456",
       "is_admin": false
+    },
+    {
+      "email": "has@cs.ca",
+      "password": "123456",
+      "firstname": "homer",
+      "lastname": "simpson",
+      "phone_number": "1111111111",
+      "is_admin": false,
+      "id": 3
     }
   ],
   "products": [
