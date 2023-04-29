@@ -1,28 +1,28 @@
-[debug] [2023-04-29T20:51:54.965Z] ----------------------------------------------------------------------
-[debug] [2023-04-29T20:51:54.968Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Predator\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js open hosting:site
-[debug] [2023-04-29T20:51:54.968Z] CLI Version:   11.29.1
-[debug] [2023-04-29T20:51:54.969Z] Platform:      win32
-[debug] [2023-04-29T20:51:54.969Z] Node Version:  v19.6.0
-[debug] [2023-04-29T20:51:54.969Z] Time:          Sat Apr 29 2023 16:51:54 GMT-0400 (Eastern Daylight Saving Time)
-[debug] [2023-04-29T20:51:54.969Z] ----------------------------------------------------------------------
+[debug] [2023-04-29T22:47:52.318Z] ----------------------------------------------------------------------
+[debug] [2023-04-29T22:47:52.321Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Predator\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js open hosting:site
+[debug] [2023-04-29T22:47:52.322Z] CLI Version:   11.29.1
+[debug] [2023-04-29T22:47:52.322Z] Platform:      win32
+[debug] [2023-04-29T22:47:52.322Z] Node Version:  v19.6.0
+[debug] [2023-04-29T22:47:52.322Z] Time:          Sat Apr 29 2023 18:47:52 GMT-0400 (Eastern Daylight Saving Time)
+[debug] [2023-04-29T22:47:52.322Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-04-29T20:51:55.073Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-04-29T20:51:55.074Z] > authorizing via signed-in user (j.veillette@hotmail.ca)
-[debug] [2023-04-29T20:51:55.074Z] [iam] checking project inf1013-303fa for permissions ["firebase.projects.get"]
-[debug] [2023-04-29T20:51:55.077Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions [none]
-[debug] [2023-04-29T20:51:55.078Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions x-goog-quota-user=projects/inf1013-303fa
-[debug] [2023-04-29T20:51:55.078Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions {"permissions":["firebase.projects.get"]}
-[debug] [2023-04-29T20:51:55.470Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions 200
-[debug] [2023-04-29T20:51:55.470Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions {"permissions":["firebase.projects.get"]}
-[debug] [2023-04-29T20:51:55.472Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa [none]
-[debug] [2023-04-29T20:51:55.778Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa 200
-[debug] [2023-04-29T20:51:55.778Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa {"projectId":"inf1013-303fa","projectNumber":"219299161011","displayName":"INF1013","name":"projects/inf1013-303fa","resources":{"hostingSite":"inf1013-303fa","realtimeDatabaseInstance":"inf1013-303fa-default-rtdb"},"state":"ACTIVE","etag":"1_59974a0f-7535-4cc6-8b8b-2f800093ef93"}
-[debug] [2023-04-29T20:51:55.779Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa [none]
-[debug] [2023-04-29T20:51:55.951Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa 200
-[debug] [2023-04-29T20:51:55.951Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa {"projectId":"inf1013-303fa","projectNumber":"219299161011","displayName":"INF1013","name":"projects/inf1013-303fa","resources":{"hostingSite":"inf1013-303fa","realtimeDatabaseInstance":"inf1013-303fa-default-rtdb"},"state":"ACTIVE","etag":"1_59974a0f-7535-4cc6-8b8b-2f800093ef93"}
+[debug] [2023-04-29T22:47:52.412Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-29T22:47:52.413Z] > authorizing via signed-in user (j.veillette@hotmail.ca)
+[debug] [2023-04-29T22:47:52.413Z] [iam] checking project inf1013-303fa for permissions ["firebase.projects.get"]
+[debug] [2023-04-29T22:47:52.417Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions [none]
+[debug] [2023-04-29T22:47:52.418Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions x-goog-quota-user=projects/inf1013-303fa
+[debug] [2023-04-29T22:47:52.418Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-29T22:47:52.726Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions 200
+[debug] [2023-04-29T22:47:52.726Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/inf1013-303fa:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-29T22:47:52.727Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa [none]
+[debug] [2023-04-29T22:47:52.993Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa 200
+[debug] [2023-04-29T22:47:52.993Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa {"projectId":"inf1013-303fa","projectNumber":"219299161011","displayName":"INF1013","name":"projects/inf1013-303fa","resources":{"hostingSite":"inf1013-303fa","realtimeDatabaseInstance":"inf1013-303fa-default-rtdb"},"state":"ACTIVE","etag":"1_59974a0f-7535-4cc6-8b8b-2f800093ef93"}
+[debug] [2023-04-29T22:47:52.994Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa [none]
+[debug] [2023-04-29T22:47:53.199Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa 200
+[debug] [2023-04-29T22:47:53.199Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/inf1013-303fa {"projectId":"inf1013-303fa","projectNumber":"219299161011","displayName":"INF1013","name":"projects/inf1013-303fa","resources":{"hostingSite":"inf1013-303fa","realtimeDatabaseInstance":"inf1013-303fa-default-rtdb"},"state":"ACTIVE","etag":"1_59974a0f-7535-4cc6-8b8b-2f800093ef93"}
 [info] Opening Hosting: Deployed Site link in your default browser:
 [info] https://inf1013-303fa.web.app
-[debug] [2023-04-29T20:51:55.964Z] Error: spawn cmd ENOENT
+[debug] [2023-04-29T22:47:53.213Z] Error: spawn cmd ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:82:21)

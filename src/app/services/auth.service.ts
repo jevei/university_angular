@@ -13,7 +13,7 @@ const httpOptions = {
 export class AuthService {
   private _currentUser: User | null = null;
   //private usersUrl = 'http://localhost:8080/api/users';
-  private usersUrl = 'https://pacific-mesa-08775.herokuapp.com/api/visitors';
+  private usersUrl = 'https://pacific-mesa-08775.herokuapp.com/api/users';
   private readonly CURRENT_USER_KEY = 'jxr.users.currentUser';
 
   get currentUser(): User | null {
