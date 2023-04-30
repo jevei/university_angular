@@ -9,7 +9,7 @@ export class User {
 
   phone_number!: string;
 
-  password!: string;
+  encrypted_password!: string;
 
   is_admin!: boolean;
 }

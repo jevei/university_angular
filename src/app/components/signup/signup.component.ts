@@ -66,7 +66,7 @@ export class SignupComponent implements OnInit {
     console.log(JSON.stringify(this.signForm.getRawValue()));
     let newUser: User = new User();
     newUser.email = this.signForm.get('email')?.value;
-    newUser.password = this.signForm.get('password')?.value;
+    newUser.encrypted_password = this.signForm.get('password')?.value;
     newUser.firstname = this.signForm.get('firstname')?.value;
     newUser.lastname = this.signForm.get('lastname')?.value;
     newUser.phone_number = this.signForm.get('phone_number')?.value;

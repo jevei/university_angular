@@ -12,8 +12,8 @@ const httpOptions = {
 })
 export class AuthService {
   private _currentUser: User | null = null;
-  //private usersUrl = 'http://localhost:8080/api/users';
-  private usersUrl = 'https://pacific-mesa-08775.herokuapp.com/api/users';
+  private usersUrl = 'http://localhost:8080/api/users';
+  //private usersUrl = 'https://pacific-mesa-08775.herokuapp.com/api/users';
   private readonly CURRENT_USER_KEY = 'jxr.users.currentUser';
 
   get currentUser(): User | null {
@@ -77,7 +77,7 @@ export class AuthService {
         console.log(response);
         var retour: boolean = false;
         response.forEach((_user) => {
-          if (_user.email == email && _user.password == password) {
+          if (_user.email == email && _user.encrypted_password == password) {
             this.setCurrentUser(_user);
             retour = true;
           }

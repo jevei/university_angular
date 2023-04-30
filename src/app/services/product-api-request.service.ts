@@ -25,21 +25,6 @@ export class ProductApiRequestService {
     };
   }
 
-  private generateJSONforProduct(product: Product) {
-    return {
-      product: {
-        name: product.name,
-        stock: product.stock,
-        price: product.price,
-        expiration: product.expiration,
-        description: product.description,
-        last_input: product.last_input,
-        last_output: product.last_output,
-      },
-      datatype: 'JSON',
-    };
-  }
-
   listProducts(): Observable<any> {
     return this.http.get<Product[]>(this.productsUrl).pipe(
       map((response) => {
@@ -89,7 +74,7 @@ export class ProductApiRequestService {
   updateProduct(productId: string, product: Product): Observable<any> {
     return this.http.put(this.productsUrl + '/' + productId, product).pipe(
       map((response) => {
-        if (response == null) {
+        if (response != null) {
           console.log(response);
           return true;
         } else {
