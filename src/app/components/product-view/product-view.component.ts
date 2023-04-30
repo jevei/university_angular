@@ -106,7 +106,7 @@ export class ProductViewComponent implements OnInit {
         this.updateProductForm.get('last_output')?.value;
     }
     this.apiService
-      .updateProduct(this.product.id.toString(), this.product)
+      .updateProduct(this.product.product_id.toString(), this.product)
       .subscribe((success) => {
         if (success) {
           console.log('OK', success);

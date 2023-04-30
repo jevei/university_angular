@@ -7,8 +7,8 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class ProductApiRequestService {
-  //private productsUrl = 'http://localhost:8080/api/products';
-  private productsUrl = 'https://pacific-mesa-08775.herokuapp.com/api/products';
+  private productsUrl = 'http://localhost:8080/api/products';
+  //private productsUrl = 'https://pacific-mesa-08775.herokuapp.com/api/products';
   private _products: Product[] = [];
 
   get products(): Product[] {
@@ -54,7 +54,7 @@ export class ProductApiRequestService {
   showProduct(id: number): Observable<any> {
     return this.http.get<any>(this.productsUrl + '/' + id).pipe(
       map((response) => {
-        if (response.id == id) {
+        if (response.product_id == id) {
           return response;
         }
         return false;
@@ -68,20 +68,22 @@ export class ProductApiRequestService {
   }
 
   deleteProduct(product: Product): Observable<any> {
-    return this.http.delete<any>(this.productsUrl + '/' + product.id).pipe(
-      map((response) => {
-        console.log(response);
-        if (response == null) {
-          return true;
-        }
-        return false;
-      }),
-      catchError((error) => {
-        console.log('Error', error);
+    return this.http
+      .delete<any>(this.productsUrl + '/' + product.product_id)
+      .pipe(
+        map((response) => {
+          console.log(response);
+          if (response == null) {
+            return true;
+          }
+          return false;
+        }),
+        catchError((error) => {
+          console.log('Error', error);
 
-        return of(null);
-      })
-    );
+          return of(null);
+        })
+      );
   }
 
   updateProduct(productId: string, product: Product): Observable<any> {
