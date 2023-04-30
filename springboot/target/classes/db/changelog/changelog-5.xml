@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    <changeSet id="5" author="Liquibase">
+        <sql>
+            INSERT INTO users(email, firstname, lastname, phone_number, encrypted_password, is_admin) VALUES ('nice@epharma.web', 'Dr. ', 'Nice', '1111111111', '123456', true);
+            INSERT INTO users(email, firstname, lastname, phone_number, encrypted_password, is_admin)  VALUES ('nice@client.web', 'Bombasto', 'Nice', '1111111111', '123456', false);
+            INSERT INTO products(name, stock, price, expiration, description, last_input, last_output, picture_url) VALUES ('Unisom', 8, 9.99, '2024-03-20', 'Unisom® est un aide-sommeil efficace et digne de confiance indiqué pour le soulagement de l''insomnie occasionnelle due au surmenage ou à la fatigue', '2023-03-10', '2023-03-16', 'https://assets.beauty.shoppersdrugmart.ca/bb-prod-product-image/628791004252/en/01/front/800/white.jpg');
+            INSERT INTO products(name, stock, price, expiration, description, last_input, last_output, picture_url) VALUES ('Tylenol', 9, 19.99, '2024-02-20', 'Ce médicament est généralement pris au besoin contre les douleurs ou la fièvre, sauf en cas d''arthrose ou d''autres troubles chroniques', '2023-02-10', '2023-03-17', 'http://cdn.shopify.com/s/files/1/0358/8833/2938/products/j_88d309d9-76cd-4bd3-97f9-6aa11b47114b_1200x1200.jpg?v=1587332534');
+            INSERT INTO products(name, stock, price, expiration, description, last_input, last_output, picture_url) VALUES ('Vitamine E', 5, 20.99, '2024-03-20', 'Vitamines pour la peau', '2023-03-10', '2023-03-16', 'http://cdn.shopify.com/s/files/1/0586/8545/6592/products/abio-cosmetic-vitamine-e-huile-pure-pour-la-peau-28000ui-30ml.png?v=1637874138');
+            INSERT INTO products(name, stock, price, expiration, description, last_input, last_output, picture_url) VALUES ('Fer+', 40, 20.99, '2024-03-20', 'Fer en comprimé', '2023-03-10', '2023-03-16', 'https://www.santeenvrac.com/i/Flora-Fer-avec-complexe-de-vitamines-B-240-ml-Sante-en-vrac-13947.jpg?size=600');
+            INSERT INTO products(name, stock, price, expiration, description, last_input, last_output, picture_url) VALUES ('Accu-Check', 0, 199.99, '2024-03-20', 'Moniteur de Glycimie', '2023-03-10', '2023-03-16', 'https://www.robe-materiel-medical.com/images_produits/image_4941_bandelettes-glycumie-(flacon-ouvert+boite).jpg?1650361790');
+            INSERT INTO products(name, stock, price, expiration, description, last_input, last_output, picture_url) VALUES ('Oxymetrie', 10, 29.99, '2024-03-21', 'Test d''oxygene', '2023-01-10', '2023-03-12', 'https://www.girodmedical.com/media/wp_uploads/2018/10/2e1a0d10ed9a269307c214cd906780d2.png');
+        </sql>
+        <rollback/>
+    </changeSet>
+</databaseChangeLog>
