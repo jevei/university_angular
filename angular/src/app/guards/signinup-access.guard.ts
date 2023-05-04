@@ -22,7 +22,10 @@ export class SigninupAccessGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log(this.authService.isLoggedIn);
+    console.log(
+      this.authService.isLoggedIn,
+      sessionStorage.getItem('app.token')
+    );
     if (!this.authService.isLoggedIn) {
       return true;
     } else {

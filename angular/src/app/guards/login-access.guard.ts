@@ -22,7 +22,10 @@ export class LoginAccessGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log('guard product', this.authService.isLoggedIn);
+    console.log(
+      sessionStorage.getItem('app.roles'),
+      this.authService.isLoggedIn
+    );
     if (this.authService.isLoggedIn) {
       return true;
     } else {

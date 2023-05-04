@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Product } from '../models/product.model';
@@ -7,9 +7,8 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class ProductApiRequestService {
-  //private productsUrl = 'http://localhost:8080/api/products';
-  private productsUrl =
-    'https://fathomless-bastion-22084.herokuapp.com/api/products';
+  private productsUrl = 'http://localhost:8080/api/products';
+  //private productsUrl = 'https://fathomless-bastion-22084.herokuapp.com/api/products';
   private _products: Product[] = [];
 
   get products(): Product[] {

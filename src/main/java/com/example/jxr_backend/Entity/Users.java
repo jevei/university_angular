@@ -1,4 +1,4 @@
-package com.example.jxr_backend.Entity;
+package com.example.jxr_backend.entity;
 
 import jakarta.persistence.*;
 
@@ -13,6 +13,19 @@ public class Users {
     private String encrypted_password;
     private boolean is_admin;
     private String phone_number;
+
+    public Users(Users user) {
+        this.user_id = user.user_id;
+        this.email = user.email;
+        this.firstname = user.firstname;
+        this.lastname = user.lastname;
+        this.encrypted_password = user.encrypted_password;
+        this.is_admin = user.is_admin;
+        this.phone_number = user.phone_number;
+    }
+
+    public Users() {
+    }
 
     public String getPhone_number() {
         return phone_number;

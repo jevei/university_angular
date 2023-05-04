@@ -3,6 +3,9 @@ import { User } from '../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'content-Type': 'application/json' }),
@@ -12,8 +15,8 @@ const httpOptions = {
 })
 export class AuthService {
   private _currentUser: User | null = null;
-  //private usersUrl = 'http://localhost:8080/api/users';
-  private usersUrl = 'https://fathomless-bastion-22084.herokuapp.com/api/users';
+  private usersUrl = 'http://localhost:8080/api/auth';
+  //private usersUrl = 'https://fathomless-bastion-22084.herokuapp.com/api/users';
   private readonly CURRENT_USER_KEY = 'jxr.users.currentUser';
 
   get currentUser(): User | null {
@@ -21,14 +24,21 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    return !!this._currentUser;
+    return (
+      sessionStorage.getItem('app.token') != null &&
+      sessionStorage.getItem('app.token') != ''
+    );
   }
 
   get isAdmin(): boolean {
     return !!this._currentUser?.is_admin;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
     const storedCurrentUser = JSON.parse(
       sessionStorage.getItem(this.CURRENT_USER_KEY) ?? 'null'
     );
@@ -56,40 +66,90 @@ export class AuthService {
 
   userRegistration(newUser: User): Observable<any> {
     newUser.is_admin = false;
-    return this.http.post<User>(this.usersUrl, newUser).pipe(
-      map((response) => {
-        console.log('New User service : ', response);
-        if (response) {
-          console.log('succès:', response);
-          this.setCurrentUser(newUser);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.http
+      .post<any>(
+        'https://fathomless-bastion-22084.herokuapp.com/api/users',
+        newUser,
+        httpOptions
+      )
+      .pipe(
+        map((response) => {
+          console.log('New User service : ', response);
+          this.logIn(newUser.email, newUser.encrypted_password!);
           return true;
-        } else {
-          return false;
-        }
-      }),
-      catchError(this.handleError<User>('adduser'))
-    );
+        }),
+        catchError((err) => {
+          if (err.status === 401) {
+            alert('Le email choisie est déjà associé à un compte.');
+          }
+          return err;
+        })
+      );
+  }
+  logIn(email: string, password: string): any {
+    sessionStorage.removeItem('app.token');
+    this.userLogin(email, password).subscribe({
+      next: (token) => {
+        sessionStorage.setItem('app.token', token);
+
+        const decodedToken = jwtDecode<JwtPayload>(token);
+
+        // @ts-ignore
+        sessionStorage.setItem('app.roles', decodedToken.scope);
+
+        this.router.navigateByUrl('/');
+      },
+      error: (error) =>
+        this.snackBar.open(`Login failed: ${error.status}`, 'OK'),
+    });
   }
 
-  userLogin(email: string, password: string): Observable<any> {
-    return this.http.get<User[]>(this.usersUrl).pipe(
+  userLogin(username: string, password: string): Observable<any> {
+    const httpOptions = {
+      headers: {
+        Authorization: 'Basic ' + window.btoa(username + ':' + password),
+      },
+      responseType: 'text' as 'text',
+    };
+    return this.http.post('/api/auth', null, httpOptions).pipe(
+      map((response) => {
+        console.log(response);
+        //var retour: boolean = false;
+        var tokenInfo: string = '';
+        tokenInfo += jwtDecode<JwtPayload>(response).sub; // decode token
+        console.log(tokenInfo, tokenInfo.length);
+        let newUser: User = new User();
+        newUser = JSON.parse(tokenInfo);
+        this.setCurrentUser(newUser);
+        return response;
+      }),
+      catchError(this.handleError<User[]>('getUsers', []))
+    );
+  } /*(email: string, password: string): Observable<any> {
+    const httpOptions = {
+      headers: {
+        Authorization: 'Basic ' + window.btoa(email + ':' + password),
+      },
+      responseType: 'text' as 'text',
+    };
+    return this.http.post<any>(this.usersUrl, httpOptions).pipe(
       map((response) => {
         console.log(response);
         var retour: boolean = false;
-        response.forEach((_user) => {
-          if (_user.email == email && _user.encrypted_password == password) {
-            this.setCurrentUser(_user);
-            retour = true;
-          }
-        });
+        console.log(response);
         return retour;
       }),
       catchError(this.handleError<User[]>('getUsers', []))
     );
-  }
+  }*/
 
-  userSignout(): Observable<any> {
-    return this.http.get<any>(this.usersUrl).pipe(
+  userSignout() {
+    sessionStorage.removeItem('app.token');
+    sessionStorage.removeItem('app.roles'); //: Observable<any> {
+    /*return this.http.get<any>(this.usersUrl).pipe(
       map((response) => {
         console.log('New User signout service : ', response);
         if (response) {
@@ -104,6 +164,6 @@ export class AuthService {
 
         return of(null);
       })
-    );
+    );*/
   }
 }

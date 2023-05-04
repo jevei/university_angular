@@ -1,4 +1,4 @@
-package com.example.jxr_backend.Entity;
+package com.example.jxr_backend.entity;
 
 import jakarta.persistence.*;
 

@@ -73,6 +73,7 @@ export class SignupComponent implements OnInit {
     console.log('SignUpform value : ', this.signForm.value);
     console.log('New user value ', newUser);
     this.authService.userRegistration(newUser).subscribe((success) => {
+      console.log(success);
       if (success) {
         this.router.navigate(['/']);
         console.log('OK');

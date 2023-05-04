@@ -1,5 +1,5 @@
 export class User {
-  user_id!: number;
+  user_id: number | undefined;
 
   email!: string;
 
@@ -9,7 +9,7 @@ export class User {
 
   phone_number!: string;
 
-  encrypted_password!: string;
+  encrypted_password: string | undefined;
 
   is_admin!: boolean;
 }

@@ -7,6 +7,7 @@ import { AdminComponent } from 'src/app/components/admin/admin.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthentificationRoutingModule } from './authentification-routing.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthentificationRoutingModule } from './authentification-routing.module
     RouterModule,
     ReactiveFormsModule,
     AuthentificationRoutingModule,
+    MatSnackBarModule,
   ],
 })
 export class AuthentificationModule {}

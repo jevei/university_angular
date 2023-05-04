@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
-import { AuthService } from 'src/app/services/auth.service';
 import { ProductApiRequestService } from 'src/app/services/product-api-request.service';
 
 @Component({
