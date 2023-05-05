@@ -148,7 +148,8 @@ export class AuthService {
 
   userSignout() {
     sessionStorage.removeItem('app.token');
-    sessionStorage.removeItem('app.roles'); //: Observable<any> {
+    sessionStorage.removeItem('app.roles');
+    this.setCurrentUser(null); //: Observable<any> {
     /*return this.http.get<any>(this.usersUrl).pipe(
       map((response) => {
         console.log('New User signout service : ', response);

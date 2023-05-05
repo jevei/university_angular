@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "inf1013-303fa"
+  },
+  "targets": {
+    "inf1013-303fa": {
+      "hosting": {
+        "my-app": [
+          "inf1013-303fa"
+        ]
+      }
+    }
   }
 }

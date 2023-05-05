@@ -12,7 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
         corsRegistry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200", "https://inf1013-303fa.web.app/")
+                .allowedOrigins("http://localhost:4200", "https://inf1013-303fa.web.app/",
+                        "https://fathomless-bastion-22084.herokuapp.com/")
                 .allowedMethods("*")
                 .maxAge(3600L)
                 .allowedHeaders("*")
