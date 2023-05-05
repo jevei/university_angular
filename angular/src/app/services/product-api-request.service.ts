@@ -8,8 +8,7 @@ import { Product } from '../models/product.model';
 })
 export class ProductApiRequestService {
   //private productsUrl = 'http://localhost:8080/api/products';
-  private productsUrl =
-    'https://fathomless-bastion-22084.herokuapp.com/api/products';
+  private productsUrl = 'https://pacific-mesa-08775.herokuapp.com/api/products';
   private _products: Product[] = [];
 
   get products(): Product[] {
