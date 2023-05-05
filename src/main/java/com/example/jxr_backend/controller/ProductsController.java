@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.jxr_backend.Entity.Products;
 import com.example.jxr_backend.Repository.ProductsRepository;
+import com.example.jxr_backend.entity.Products;
 
 import java.util.List;
 
